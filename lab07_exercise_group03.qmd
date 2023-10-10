@@ -46,14 +46,27 @@ gravier_clean <- gravier |>
   as_tibble()
 ```
 
+```{r}
+gravier_clean <- gravier_clean |>
+  mutate(y = case_when(y == "poor" ~ 1,
+                       y == "good" ~ 0)) |> 
+  relocate(early_metastasis = y)
+```
+
 ## Create subset
 
 ```{r}
 set.seed(101023)
 
 gravier_clean_subset <- gravier_clean |>
-  select(rdunif(10, b = 1, a = ncol(gravier_clean)))
+  select(early_metastasis,
+         rdunif(10, b = 2, a = ncol(gravier_clean)))
 ```
 
+```{r}
+pca_fit <- gravier_clean_subset |> 
+  select(!early_metastasis) |> 
+  prcomp(scale = TRUE) 
+```
 
 
