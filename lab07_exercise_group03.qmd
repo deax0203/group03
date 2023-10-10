@@ -90,9 +90,48 @@ pca_fit <- gravier_clean_subset |>
 ```
 
 
-## Plot 1
+## PCA1 and PCA2 vs early metastasis
+```{r}
+pca_fit |> 
+  augment(gravier_clean_subset) |>  # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2, color = factor(early_metastasis))) + 
+  geom_point(size = 1.5) +
+  labs(color = "Early metastasis", title = "PCA component 1 and 2", subtitle = "0: No metastasis, 1: Early metastasis")
+```
 
-## Plot 2
+
+
+
+## Rotation matrix
+```{r}
+# check the rotation
+pca_fit %>%
+  tidy(matrix = "rotation")
+
+# define arrow style for plotting
+arrow_style <- arrow(
+  angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
+)
+
+# plot rotation matrix
+pca_fit %>%
+  tidy(matrix = "rotation") %>%
+  pivot_wider(names_from = "PC", names_prefix = "PC", values_from = "value") %>%
+  ggplot(aes(PC1, PC2)) +
+  geom_segment(xend = 0, yend = 0, arrow = arrow_style) +
+  geom_text(
+    aes(label = column),
+    hjust = 1, nudge_x = -0.02, 
+    color = "#904C2F"
+  ) +
+  xlim(-1, .5) + ylim(-.5, .5) +
+  coord_fixed() + # fix aspect ratio to 1:1
+  labs(
+    title = "Principal Component Rotation Matrix"
+  ) +
+  theme_minimal()
+```
+
 
 ## Explained variance by PCs
 
