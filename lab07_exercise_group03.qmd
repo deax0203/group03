@@ -73,6 +73,16 @@ pca_fit <- gravier_clean_subset |>
 
 
 ## Plot 1
+```{r}
+pca_fit |> 
+  augment(gravier_clean_subset) |>  # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2, color = factor(early_metastasis))) + 
+  geom_point(size = 1.5) +
+  labs(color = "Early metastasis", title = "PCA component 1 and 2", subtitle = "0: No metastasis, 1: Early metastasis")
+```
+
+
+
 
 ## Rotation matrix
 ```{r}
