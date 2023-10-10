@@ -5,7 +5,8 @@ editor: visual
 ---
 
 ### Dea
-These are Deas changes
+These are Deas changes.
+This is a chunk of code.
 ```{r}
 1+1
 ```
