@@ -1,0 +1,59 @@
+---
+title: "Lab 7 | Group 3"
+format: html
+editor: visual
+---
+
+Authors: s184324, s184344, s184330, s194699, s194691
+
+Date: 3/10 2023
+
+## Introduction
+
+This assignment explores the gravier data set. The data set describes the gene expression from 168 patients used to predict metastasis of small node-negative breast carcinoma with either good (111 patients with no event at 5 years after diagnosis) or poor (57 patients with early metastasis) outcome.
+
+We aim to answer the following question:
+
+What genes are significantly up-/down-regulated between the patients with- and without early metastasis?
+
+## Load Data
+
+Load libraries:
+
+```{r}
+#| message: false
+library("tidyverse")
+library("patchwork")
+library("broom")
+library("ggrepel")
+```
+
+Get the data:
+
+```{r}
+target_url <- "https://github.com/ramhiser/datamicroarray/raw/master/data/gravier.RData"
+output_file <- "gravier.RData"
+curl::curl_download(url = target_url,
+                    destfile = output_file)
+load(file = "gravier.RData")
+```
+
+## Clean Data
+
+```{r}
+gravier_clean <- gravier |>
+  bind_cols() |>
+  as_tibble()
+```
+
+## Create subset
+
+```{r}
+set.seed(101023)
+
+gravier_clean_subset <- gravier_clean |>
+  select(rdunif(10, b = 1, a = ncol(gravier_clean)))
+```
+
+
+
