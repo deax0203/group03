@@ -4,20 +4,30 @@ format: html
 editor: visual
 ---
 
-### Dea
-These are Deas changes
+## Dea
+
+These are Deas changes. This is a chunk of code.
+
 ```{r}
 1+1
 ```
 
+### New feature
+
+This is Deas new feature
+```{r}
+2+2
+```
 
 
 ### Helene
+
 ```{r}
 a <- 2
 b <- 4
 a+b
 ```
+
 This is simple maths.
 
 ### Johanne
@@ -27,4 +37,3 @@ Here is some random code:
 ```{r}
 print("Today is Tuesday!")
 ```
-
