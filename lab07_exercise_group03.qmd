@@ -4,14 +4,14 @@ format: html
 editor: visual
 ---
 
-Authors: 
-Dea Skipper, s184324 
-Rebecca Grenov, s184344
-Anne Skov, s184330
-Helene Brasch Lind Petersen, s194699
+Authors:\
+Dea Skipper, s184324\
+Rebecca Grenov, s184344\
+Anne Skov, s184330\
+Helene Brasch Lind Petersen, s194699\
 Johanne Badsberg Overgaard, s194691
 
-Date: 3/10 2023
+Date: 10/10 2023
 
 ## Introduction
 
@@ -71,7 +71,7 @@ gravier_clean |>
 
 ## Create subset
 
-We will only look at 10 genes in the following analysis. 
+We will only look at 10 genes in the following analysis.
 
 ```{r}
 set.seed(101023)
@@ -89,8 +89,8 @@ pca_fit <- gravier_clean_subset |>
   prcomp(scale = TRUE) 
 ```
 
-
 ## PCA1 and PCA2 vs early metastasis
+
 ```{r}
 pca_fit |> 
   augment(gravier_clean_subset) |>  # add original dataset back in
@@ -99,10 +99,8 @@ pca_fit |>
   labs(color = "Early metastasis", title = "PCA component 1 and 2", subtitle = "0: No metastasis, 1: Early metastasis")
 ```
 
-
-
-
 ## Rotation matrix
+
 ```{r}
 # check the rotation
 pca_fit %>%
@@ -132,7 +130,6 @@ pca_fit %>%
   theme_minimal()
 ```
 
-
 ## Explained variance by PCs
 
 We can look at the explained variance for each of the PCs:
@@ -156,5 +153,4 @@ pca_fit |>
   ) 
 ```
 
-The 2 first PCs only explain around 30 % of the variance in the data. This might explain why there is no clear separation between the two groups in the data set. 
-
+The 2 first PCs only explain around 30 % of the variance in the data. This might explain why there is no clear separation between the two groups in the data set.
