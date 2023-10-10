@@ -28,3 +28,21 @@ Here is some random code:
 print("Today is Tuesday!")
 ```
 
+#### New feature
+
+Let do some more random code:
+
+```{r}
+x <- rnorm(100)
+y <- rnorm(100)
+```
+
+Let see if x and y is correlated:
+
+```{r}
+cor(x, y)
+```
+
+Nope, not really.
+
+
