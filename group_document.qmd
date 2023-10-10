@@ -9,3 +9,10 @@ editor: visual
 ### Helene
 
 ### Johanne
+
+Here is some random code:
+
+```{r}
+print("Today is Tuesday!")
+```
+
