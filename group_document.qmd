@@ -5,8 +5,20 @@ editor: visual
 ---
 
 ### Dea
+These are Deas changes
+```{r}
+1+1
+```
+
+
 
 ### Helene
+```{r}
+a <- 2
+b <- 4
+a+b
+```
+This is simple maths.
 
 ### Johanne
 
