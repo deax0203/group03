@@ -5,6 +5,12 @@ editor: visual
 ---
 
 ### Dea
+These are Deas changes
+```{r}
+1+1
+```
+
+
 
 ### Helene
 
