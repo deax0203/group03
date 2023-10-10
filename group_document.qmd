@@ -29,6 +29,10 @@ a+b
 ```
 
 This is simple maths.
+#### New feature
+```{r}
+print("This is a new feature")
+```
 
 ### Johanne
 
