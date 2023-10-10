@@ -40,6 +40,8 @@ load(file = "gravier.RData")
 
 ## Clean Data
 
+Create tibble:
+
 ```{r}
 gravier_clean <- gravier |>
   bind_cols() |>
@@ -68,5 +70,14 @@ pca_fit <- gravier_clean_subset |>
   select(!early_metastasis) |> 
   prcomp(scale = TRUE) 
 ```
+
+
+## Plot 1
+
+## Plot 2
+
+## Plot 3
+
+
 
 
