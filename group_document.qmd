@@ -14,5 +14,18 @@ This is a chunk of code.
 
 
 ### Helene
+```{r}
+a <- 2
+b <- 4
+a+b
+```
+This is simple maths.
 
 ### Johanne
+
+Here is some random code:
+
+```{r}
+print("Today is Tuesday!")
+```
+
