@@ -4,7 +4,12 @@ format: html
 editor: visual
 ---
 
-Authors: s184324, s184344, s184330, s194699, s194691
+Authors: 
+Dea Skipper, s184324 
+Rebecca Grenov, s184344
+Anne Skov, s184330
+Helene Brasch Lind Petersen, s194699
+Johanne Badsberg Overgaard, s194691
 
 Date: 3/10 2023
 
@@ -14,7 +19,7 @@ This assignment explores the gravier data set. The data set describes the gene e
 
 We aim to answer the following question:
 
-What genes are significantly up-/down-regulated between the patients with- and without early metastasis?
+Is there a difference between patients with no event at 5 years after diagnosis and patients with early metastasis?
 
 ## Load Data
 
@@ -48,6 +53,8 @@ gravier_clean <- gravier |>
   as_tibble()
 ```
 
+We add new variable defining the classification for each patient by a binary encoding (1 = early metastasis, 0 = no early metastasis). The function `relocate()` change the name of the y column and moves the column to be first position in the tibble.
+
 ```{r}
 gravier_clean <- gravier_clean |>
   mutate(y = case_when(y == "poor" ~ 1,
@@ -55,7 +62,16 @@ gravier_clean <- gravier_clean |>
   relocate(early_metastasis = y)
 ```
 
+View of the data:
+
+```{r}
+gravier_clean |> 
+  sample_n(10)
+```
+
 ## Create subset
+
+We will only look at 10 genes in the following analysis. 
 
 ```{r}
 set.seed(101023)
@@ -64,6 +80,8 @@ gravier_clean_subset <- gravier_clean |>
   select(early_metastasis,
          rdunif(10, b = 2, a = ncol(gravier_clean)))
 ```
+
+## Running the PCA
 
 ```{r}
 pca_fit <- gravier_clean_subset |> 
@@ -76,8 +94,28 @@ pca_fit <- gravier_clean_subset |>
 
 ## Plot 2
 
-## Plot 3
+## Explained variance by PCs
 
+We can look at the explained variance for each of the PCs:
 
+```{r}
+pca_fit |> 
+  tidy(matrix = "eigenvalues")
+```
 
+The plottet results:
+
+```{r}
+pca_fit |> 
+  tidy(matrix = "eigenvalues") |> 
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#56B4E9", alpha = 0.8) +
+  scale_x_continuous(breaks = 1:10) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) 
+```
+
+The 2 first PCs only explain around 30 % of the variance in the data. This might explain why there is no clear separation between the two groups in the data set. 
 
