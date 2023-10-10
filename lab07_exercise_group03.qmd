@@ -72,7 +72,7 @@ pca_fit <- gravier_clean_subset |>
 ```
 
 
-## Plot 1
+## PCA1 and PCA2 vs early metastasis
 ```{r}
 pca_fit |> 
   augment(gravier_clean_subset) |>  # add original dataset back in
