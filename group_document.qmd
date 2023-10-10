@@ -4,21 +4,35 @@ format: html
 editor: visual
 ---
 
-### Dea
-These are Deas changes
+## Dea
+
+These are Deas changes. This is a chunk of code.
+
 ```{r}
 1+1
 ```
 
+### New feature
+
+This is Deas new feature
+```{r}
+2+2
+```
 
 
 ### Helene
+
 ```{r}
 a <- 2
 b <- 4
 a+b
 ```
+
 This is simple maths.
+#### New feature
+```{r}
+print("This is a new feature")
+```
 
 ### Johanne
 
@@ -44,5 +58,3 @@ cor(x, y)
 ```
 
 Nope, not really.
-
-
